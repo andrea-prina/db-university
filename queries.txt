@@ -1,0 +1,73 @@
+*** Query con SELECT ***
+
+1.
+SELECT *
+FROM `students`
+WHERE YEAR(`date_of_birth`) = 1990;
+
+
+2.
+SELECT *
+FROM `courses`
+WHERE `cfu` > 10;
+
+
+3.
+SELECT *
+FROM `students`
+WHERE 2022 - YEAR(`date_of_birth`) > 30;
+
+
+4.
+SELECT *
+FROM `courses`
+WHERE `period` = "I Semestre" AND `year` = 1;
+
+
+5.
+SELECT *
+FROM `exams`
+WHERE `date` = "2020-06-20" AND HOUR(`hour`) >= 14;
+
+
+6.
+SELECT *
+FROM `degrees`
+WHERE `level` = "magistrale";
+
+
+7.
+SELECT COUNT(`id`)
+FROM `departments`;
+
+
+8.
+SELECT COUNT(`id`)
+FROM `teachers`
+WHERE `teachers`.`phone` IS NULL;
+
+
+*** Query con GROUP BY ***
+
+1.
+SELECT YEAR(`enrolment_date`) AS "Year", COUNT(`id`) AS "Enrlolments"
+FROM `students`
+GROUP BY Year;
+
+
+2.
+SELECT `office_address` AS "Office", COUNT(`id`)
+FROM `teachers`
+GROUP BY Office;
+
+
+3.
+SELECT `exam_id`, ROUND(AVG(`vote`), 2) AS `Average vote`
+FROM `exam_student`
+GROUP BY `exam_id`;
+
+
+4.
+SELECT `department_id`, COUNT(`id`)
+FROM `degrees`
+GROUP BY `department_id`; 
